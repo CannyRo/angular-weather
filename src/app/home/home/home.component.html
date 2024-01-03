@@ -3,8 +3,10 @@
 (handleTerm)="handleSearch($event)"
 [cities]="(cities$ | async)"
 (handleCity)="handleCity([$event])"
+(handleWeather)="getWeather($event)"
 ></app-search-bar>
 <app-overview
 [city]="(city$ | async)"
+[weather]="(weather$ | async)"
 ></app-overview>
 <app-favorite></app-favorite>

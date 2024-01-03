@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { SearchService } from './search.service';
-import { Subject, debounceTime, distinctUntilChanged, switchMap } from 'rxjs';
+import { Observable, Subject, debounceTime, distinctUntilChanged, finalize, map, switchMap } from 'rxjs';
 import { City, Coordinates } from '../city';
 import { Weather } from '../weather';
 
@@ -24,13 +24,7 @@ export class FacadeService {
   constructor(private searchService: SearchService) {
     console.log("Constructor from FacadeService : ON");
     this.getCityArray();
-    // this.searchTerm$.pipe(
-    //   debounceTime(300),
-    //   distinctUntilChanged(),
-    //   switchMap((term:string)=> this.searchService.getCity(term)),
-    // ).subscribe((cities: City[])=> {
-    //   this.cities.next(cities);
-    // });
+    // this.handleLocation();
 
   }
 
@@ -55,8 +49,33 @@ export class FacadeService {
     this.city.next(cities[0]);
   }
 
+  handleLocation() {
+    console.log("handleLocation() from FacadeService");
+    this.city$.subscribe((city: City)=>{
+      let coordinates : Coordinates = {
+        latitude: city.latitude,
+        longitude: city.longitude
+      }
+      this.location.next(coordinates);
+    })
+  }
+
   getWeather(location: Coordinates){
     console.log("getWeather() from FacadeService");
-    this.searchService.getWeather(location);
+    // let localWeather : Observable<Weather> = this.searchService.getWeather(location)
+    this.searchService.getWeather(location).subscribe((weather: Weather) => {
+      this.weather.next(weather);
+    });
+    // this.location$.pipe(
+    //   map((coordonates: Coordinates) => this.searchService.getWeather(coordonates))
+    // ).subscribe((weather: Weather) => {
+    //   this.weather.next(weather);
+    // })
+    // this.location$.pipe(
+    //   finalize((location: Coordinates)=> this.searchService.getWeather(location))
+    // ).subscribe((weather: Weather) => {
+    //   this.weather.next(weather)
+    // })
   }
+
 }

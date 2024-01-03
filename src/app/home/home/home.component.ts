@@ -4,7 +4,7 @@ import { OverviewComponent } from "../overview/overview.component";
 import { FavoriteComponent } from "../favorite/favorite.component";
 import { FacadeService } from '../../services/facade.service';
 import { CommonModule } from '@angular/common';
-import { City } from '../../city';
+import { City, Coordinates } from '../../city';
 
 
 @Component({
@@ -39,5 +39,10 @@ export class HomeComponent implements OnInit, OnChanges{
     handleCity(cities: City[]){
         console.log("handleCity() from Home");
         this.facade.handleCity(cities);
+    }
+
+    getWeather(location: Coordinates){
+        console.log("getWeather() from Home");
+        this.facade.getWeather(location);
     }
 }
