@@ -1,1 +1,10 @@
-<p>home works!</p>
+<app-search-bar
+[searchTerm]="(searchTerm$ | async)"
+(handleTerm)="handleSearch($event)"
+[cities]="(cities$ | async)"
+(handleCity)="handleCity([$event])"
+></app-search-bar>
+<app-overview
+[city]="(city$ | async)"
+></app-overview>
+<app-favorite></app-favorite>
