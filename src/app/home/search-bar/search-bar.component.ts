@@ -1,7 +1,8 @@
-import { AfterContentInit, Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 import { CityObjectToStringPipe } from "../../services/city-object-to-string.pipe";
-import { City } from '../../city';
+import { City, Coordinates } from '../../city';
 import { CommonModule } from '@angular/common';
+
 
 @Component({
     selector: 'app-search-bar',
@@ -10,7 +11,7 @@ import { CommonModule } from '@angular/common';
     styleUrl: './search-bar.component.css',
     imports: [CommonModule, CityObjectToStringPipe]
 })
-export class SearchBarComponent implements OnChanges, OnInit, AfterContentInit{
+export class SearchBarComponent implements OnChanges{
 
   @Input() searchTerm!: string | null;
 
@@ -20,30 +21,16 @@ export class SearchBarComponent implements OnChanges, OnInit, AfterContentInit{
 
   @Output() handleCity = new EventEmitter<City>();
 
-  ngOnInit() {
-    console.log("##  ONINIT  ##");
-  }
+  @Output() handleWeather = new EventEmitter<Coordinates>();
 
   ngOnChanges() {
     console.log("##  ONCHANGE  ##");
     console.log("OnChanges from SearchBarComponent");
     console.log("length", this.cities?.length);
-    // console.log("Unique City = ", this.citySelected);
     if(this.cities?.length && this.cities?.length == 1){
       console.log("Check OK");
       this.getOneCity(this.cities);
     }
-    // console.log(this.citySelected);
-  }
-
-  ngAfterContentInit() {
-    console.log("AfterContentInit from SearchBarComponent");
-    // console.log("length", this.cities?.length);
-    // console.log("Unique City = ", this.citySelected);
-    // if(this.cities?.length && this.cities?.length == 1){
-    //   console.log("Check OK");
-    //   this.getOneCity(this.cities);
-    // }
   }
 
   handleChange(term:string) {
@@ -62,6 +49,11 @@ export class SearchBarComponent implements OnChanges, OnInit, AfterContentInit{
       console.log("Select one city in the list");
     } else {
       console.log(`On cherche ${this.cities[0].name} avec les coordonnées suivantes : LATITUDE = ${this.cities[0].latitude} LONGITUDE = ${this.cities[0].longitude}`);
+      let location : Coordinates = {
+        latitude : this.cities[0].latitude,
+        longitude : this.cities[0].longitude
+      }
+      this.handleWeather.emit(location);
     }
   }
 }
