@@ -1,4 +1,4 @@
-import { Component, OnChanges, OnInit} from '@angular/core';
+import { Component } from '@angular/core';
 import { SearchBarComponent } from "../search-bar/search-bar.component";
 import { OverviewComponent } from "../overview/overview.component";
 import { FavoriteComponent } from "../favorite/favorite.component";
@@ -14,7 +14,7 @@ import { City, Coordinates } from '../../city';
     styleUrl: './home.component.css',
     imports: [CommonModule, SearchBarComponent, OverviewComponent, FavoriteComponent]
 })
-export class HomeComponent implements OnInit, OnChanges{
+export class HomeComponent {
 
     searchTerm$ = this.facade.searchTerm$;
     cities$ = this.facade.cities$;
@@ -24,25 +24,18 @@ export class HomeComponent implements OnInit, OnChanges{
 
     constructor(private facade: FacadeService){}
 
-    ngOnInit(): void {
-        console.log("OnInit from Home");
-    }
-    ngOnChanges(): void {
-        console.log("OnChange from Home");
-    }
-
     handleSearch(term: string){
-        console.log("handleSearch() from Home");
+        // console.log("handleSearch() from Home");
         this.facade.handleSearch(term);
     }
 
     handleCity(cities: City[]){
-        console.log("handleCity() from Home");
+        // console.log("handleCity() from Home");
         this.facade.handleCity(cities);
     }
 
     getWeather(location: Coordinates){
-        console.log("getWeather() from Home");
+        // console.log("getWeather() from Home");
         this.facade.getWeather(location);
     }
 }
