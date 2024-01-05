@@ -24,11 +24,8 @@ export class SearchBarComponent implements OnChanges{
   @Output() handleWeather = new EventEmitter<Coordinates>();
 
   ngOnChanges() {
-    console.log("##  ONCHANGE  ##");
-    console.log("OnChanges from SearchBarComponent");
-    console.log("length", this.cities?.length);
     if(this.cities?.length && this.cities?.length == 1){
-      console.log("Check OK");
+      // console.log("Check OK");
       this.getOneCity(this.cities);
     }
   }

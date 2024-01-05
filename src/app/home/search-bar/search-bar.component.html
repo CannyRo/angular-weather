@@ -4,7 +4,6 @@
         #searchBox (input)="handleChange(searchBox.value)" list="listOfResult"/>
         <datalist id="listOfResult" >
             <option *ngFor="let city of cities" [value]="city | cityObjectToString">
-            <!--<option *ngFor="let city of cities" [value]="city.name">-->
         </datalist>
         <input type="button" value="Click" (click)="getWeather()"/>
     </form>

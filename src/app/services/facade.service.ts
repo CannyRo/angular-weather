@@ -22,19 +22,19 @@ export class FacadeService {
   weather$ = this.weather.asObservable();
 
   constructor(private searchService: SearchService) {
-    console.log("Constructor from FacadeService : ON");
+    // console.log("Constructor from FacadeService : ON");
     this.getCityArray();
     // this.handleLocation();
 
   }
 
   handleSearch(term:string) {
-    console.log("handleSearch() from FacadeService");
+    // console.log("handleSearch() from FacadeService");
     this.searchTerm.next(term);
   }
 
   getCityArray(){
-    console.log("getCityArray() from FacadeService");
+    // console.log("getCityArray() from FacadeService");
     this.searchTerm$.pipe(
       debounceTime(300),
       distinctUntilChanged(),
@@ -45,12 +45,12 @@ export class FacadeService {
   }
 
   handleCity(cities: City[]){
-    console.log("handleCity() from FacadeService");
+    // console.log("handleCity() from FacadeService");
     this.city.next(cities[0]);
   }
 
   handleLocation() {
-    console.log("handleLocation() from FacadeService");
+    // console.log("handleLocation() from FacadeService");
     this.city$.subscribe((city: City)=>{
       let coordinates : Coordinates = {
         latitude: city.latitude,
@@ -66,16 +66,6 @@ export class FacadeService {
     this.searchService.getWeather(location).subscribe((weather: Weather) => {
       this.weather.next(weather);
     });
-    // this.location$.pipe(
-    //   map((coordonates: Coordinates) => this.searchService.getWeather(coordonates))
-    // ).subscribe((weather: Weather) => {
-    //   this.weather.next(weather);
-    // })
-    // this.location$.pipe(
-    //   finalize((location: Coordinates)=> this.searchService.getWeather(location))
-    // ).subscribe((weather: Weather) => {
-    //   this.weather.next(weather)
-    // })
   }
 
 }
