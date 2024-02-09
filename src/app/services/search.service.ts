@@ -24,7 +24,7 @@ export class SearchService {
     // console.log("termToArrayFromSpace : ",termToArrayFromSpace);
     let formatedTerm : string | undefined = termToArray.at(0);
     // console.log("formatedTerm : ",formatedTerm);
-    if(termToArray.length > 3 && termToArrayFromSpace[termToArrayFromSpace.length-4] == "id"){
+    if(termToArray.length >= 3 && termToArrayFromSpace[termToArrayFromSpace.length-4] == "id"){
       console.log("CHECK is OK")
       // console.log(termToArrayFromSpace[termToArrayFromSpace.length-2]);
       // console.log(Number(termToArrayFromSpace[termToArrayFromSpace.length-2]));

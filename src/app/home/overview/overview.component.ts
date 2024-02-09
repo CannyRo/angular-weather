@@ -1,11 +1,13 @@
 import { Component, Input, OnChanges } from '@angular/core';
 import { City } from '../../city';
 import { Weather } from '../../weather';
+import { WeatherToImagePipe } from '../../services/weather-to-image.pipe';
+import { BackgroundIsDayOrNightDirective } from '../../services/background-is-day-or-night.directive';
 
 @Component({
   selector: 'app-overview',
   standalone: true,
-  imports: [],
+  imports: [BackgroundIsDayOrNightDirective, WeatherToImagePipe],
   templateUrl: './overview.component.html',
   styleUrl: './overview.component.css'
 })

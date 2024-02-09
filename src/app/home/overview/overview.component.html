@@ -1,14 +1,19 @@
 @if (weather !== null) {
-    <section class="card_container">
-        <div class="card_content" style="background-color: cadetblue;">
-            <h2 class="card_title">{{city?.name}}</h2>
-            <h3 class="card_subtitle">{{city?.admin2}}</h3>
-            <h4 class="card_subtitle">{{city?.country}}</h4>
-            <div >Temperature : {{weather.current.temperature_2m}}{{weather.current_units.temperature_2m}}</div>
+    <section class="card_container" isDayOrNight [weather]="weather">
+        <div class="card_content">
+            <div>
+                <h2 class="card_title">{{city?.name}}</h2>
+                <h3 class="card_subtitle">{{city?.admin2}}</h3>
+                <h4 class="card_subtitle">{{city?.country}}</h4>
+            </div>
+            
+            <div class="temperature">{{weather.current.temperature_2m}} {{weather.current_units.temperature_2m}}</div>
         </div>
-        <div class="card_img" style="background-color:cornflowerblue">
-            <img src="../../../assets/weathercode/0_day.png" alt="" srcset="">
+        <div class="card_img">
+            <img [src]="weather | weatherToImage" alt="" srcset="">
+            <!--
             <div class="card_temperature">{{weather.current.temperature_2m}} {{weather.current_units.temperature_2m}}</div>
+            -->
         </div>
     </section>
 }
