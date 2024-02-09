@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnChanges, Output, ViewChild } from '@angular/core';
 import { CityObjectToStringPipe } from "../../services/city-object-to-string.pipe";
 import { City, Coordinates } from '../../city';
 import { CommonModule } from '@angular/common';
@@ -13,6 +13,9 @@ import { CommonModule } from '@angular/common';
 })
 export class SearchBarComponent implements OnChanges{
 
+  @ViewChild('searchBox') input!: ElementRef<HTMLInputElement>;
+  @ViewChild('datalist') datalist!: ElementRef<HTMLInputElement>;
+
   @Input() searchTerm!: string | null;
 
   @Output() handleTerm = new EventEmitter<string>();
@@ -23,11 +26,21 @@ export class SearchBarComponent implements OnChanges{
 
   @Output() handleWeather = new EventEmitter<Coordinates>();
 
+  
   ngOnChanges() {
+    console.log("===> ONCHANGE SearchBar");
+    console.log("onChange Input ",this.input);
+    console.log("onChange Datalist ",this.datalist);
+    // if(this.input.nativeElement){}
+
+
+
     if(this.cities?.length && this.cities?.length == 1){
       // console.log("Check OK");
       this.getOneCity(this.cities);
     }
+
+
   }
 
   handleChange(term:string) {
@@ -52,5 +65,19 @@ export class SearchBarComponent implements OnChanges{
       }
       this.handleWeather.emit(location);
     }
+  }
+
+  datalistSchemOverwrite(){
+    console.log("FOCUS");
+    console.log("INPUT",this.input);
+    console.log("DATALIST",this.datalist);
+    if(this.datalist){
+      console.table(this.datalist.nativeElement.childNodes);
+    }
+    // this.datalist.nativeElement.style.display = 'block';
+    // this.input.nativeElement.style
+    // this.datalist.nativeElement.childNodes.forEach(
+
+    // )
   }
 }

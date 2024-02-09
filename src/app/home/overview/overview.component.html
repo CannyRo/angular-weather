@@ -1,1 +1,8 @@
 <p>overview works!</p>
+@if (weather !== null) {
+    <section>
+        <div>{{city?.name}}</div>
+        <div>Tempeture : {{weather.current.apparent_temperature}}{{weather.current_units.apparent_temperature}}</div>
+    </section>
+}
+
