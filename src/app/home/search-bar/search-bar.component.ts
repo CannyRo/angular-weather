@@ -28,9 +28,9 @@ export class SearchBarComponent implements OnChanges{
 
   
   ngOnChanges() {
-    console.log("===> ONCHANGE SearchBar");
-    console.log("onChange Input ",this.input);
-    console.log("onChange Datalist ",this.datalist);
+    // console.log("===> ONCHANGE SearchBar");
+    // console.log("onChange Input ",this.input);
+    // console.log("onChange Datalist ",this.datalist);
     // if(this.input.nativeElement){}
 
 
@@ -52,10 +52,13 @@ export class SearchBarComponent implements OnChanges{
   }
 
   getWeather(){
-    console.log("GetWeather() from SearchBarComponent");
+    // console.log("GetWeather() from SearchBarComponent");
     if(!this.cities?.length){
+      console.log(this.cities?.length);
       console.log("Type a city name");
     } else if(this.cities?.length && this.cities?.length> 1){
+      console.log(this.cities);
+      console.log(this.cities?.length);
       console.log("Select one city in the list");
     } else {
       console.log(`On cherche ${this.cities[0].name} avec les coordonnées suivantes : LATITUDE = ${this.cities[0].latitude} LONGITUDE = ${this.cities[0].longitude}`);
@@ -71,8 +74,14 @@ export class SearchBarComponent implements OnChanges{
     console.log("FOCUS");
     console.log("INPUT",this.input);
     console.log("DATALIST",this.datalist);
-    if(this.datalist){
+    if(this.datalist && this.datalist.nativeElement.childNodes.length > 1){
       console.table(this.datalist.nativeElement.childNodes);
+      this.datalist.nativeElement.setAttribute('style', 'display: block');
+      let myOptionsArray = Array.from(this.datalist.nativeElement.children);
+      myOptionsArray.forEach(element => {
+        console.log(myOptionsArray.indexOf(element),element);
+        // this.datalist.nativeElement.children
+      });
     }
     // this.datalist.nativeElement.style.display = 'block';
     // this.input.nativeElement.style
