@@ -1,5 +1,8 @@
 @if (weather !== null) {
-    <section class="card_container" isDayOrNight [weather]="weather">
+    <!--
+    <section class="card_container" isDayOrNight [weather]="weather">-->
+        <!-- -->
+    <section class="card_container {{backgroundColor}} {{textColor}}">
         <div class="card_content">
             <div>
                 <h2 class="card_title">{{city?.name}}</h2>

@@ -1,3 +1,16 @@
+.bg_day{
+    background-color: #8AC6FF;
+}
+.bg_night{
+    background-color: #0C0B46;
+}
+.color_day{
+    color: #0C0B46;
+}
+.color_night{
+    color: #fff;
+}
+
 .card_container{
     margin-top: 2rem;
     padding: 2rem;
