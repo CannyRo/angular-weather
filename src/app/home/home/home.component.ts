@@ -22,20 +22,25 @@ export class HomeComponent {
     location$ = this.facade.location$;
     weather$ = this.facade.weather$;
 
+    refresh : boolean = false;
+
     constructor(private facade: FacadeService){}
 
     handleSearch(term: string){
         // console.log("handleSearch() from Home");
         this.facade.handleSearch(term);
+        this.refresh = false;
     }
 
     handleCity(cities: City[]){
         // console.log("handleCity() from Home");
         this.facade.handleCity(cities);
+        this.refresh = false;
     }
 
     getWeather(location: Coordinates){
         // console.log("getWeather() from Home");
         this.facade.getWeather(location);
+        this.refresh = true;
     }
 }

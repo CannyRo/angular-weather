@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges } from '@angular/core';
-import { City } from '../../city';
+import { City, Coordinates } from '../../city';
 import { Weather } from '../../weather';
 import { WeatherToImagePipe } from '../../services/weather-to-image.pipe';
 import { BackgroundIsDayOrNightDirective } from '../../services/background-is-day-or-night.directive';
@@ -16,15 +16,47 @@ export class OverviewComponent implements OnChanges{
   @Input() city!: City | null;
   @Input() weather!: Weather | null;
 
+  @Input() showResult!: boolean;
+
   backgroundColor: string | undefined;
   textColor: string | undefined;
 
+  localCity!: City | null;
+  localWeather!: Weather | null;
+
   ngOnChanges(): void {
-    console.log("OnChanges => the city is : ", this.city);
-    console.log("OnChanges => the weather is : ", this.weather);
-    if(this.weather){
+
+    // if(this.weather && this.city){
+    //   // console.log('Check if City Coordinates and Weather Coordinates match => ');
+    //   this.backgroundColor = this.weather.current.is_day == 0 ? 'bg_night' : 'bg_day';
+    //   this.textColor = this.weather.current.is_day == 0 ? 'color_night' : 'color_day';
+
+    //   console.log(this.city.latitude);
+    //   console.log(this.weather.latitude);
+    //   console.log(this.city.longitude);
+    //   console.log(this.weather.longitude);
+    //   console.log("= REFRESH = : ",this.showResult);
+      
+      
+    // }
+    if(this.showResult){
+      this.localCity = this.city;
+      this.localWeather = this.weather;
+    }
+    if(this.weather && this.city){
+      // console.log('Check if City Coordinates and Weather Coordinates match => ');
       this.backgroundColor = this.weather.current.is_day == 0 ? 'bg_night' : 'bg_day';
       this.textColor = this.weather.current.is_day == 0 ? 'color_night' : 'color_day';
+
+      console.log(this.city.latitude);
+      console.log(this.weather.latitude);
+      console.log(this.city.longitude);
+      console.log(this.weather.longitude);
+      console.log("= REFRESH = : ",this.showResult);
+      
+      
     }
   }
+
 }
+

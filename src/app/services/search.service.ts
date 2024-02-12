@@ -29,29 +29,29 @@ export class SearchService {
       // console.log(termToArrayFromSpace[termToArrayFromSpace.length-2]);
       // console.log(Number(termToArrayFromSpace[termToArrayFromSpace.length-2]));
       return this.http.get<any>(`https://geocoding-api.open-meteo.com/v1/search?name=${formatedTerm}&count=12&language=en&format=json`).pipe(
-        tap(response => {
-          console.log(response.results);
-          console.log(typeof(response));
-        }),
+        // tap(response => {
+        //   console.log(response.results);
+        //   console.log(typeof(response));
+        // }),
         map(response => response.results),
         map(response => response.filter((res: City) => res.id == Number(termToArrayFromSpace[termToArrayFromSpace.length-2]))),
-        tap(response => {
-          console.log("===ICI===");
-          console.log(response);
-        }),
+        // tap(response => {
+        //   console.log("===ICI===");
+        //   console.log(response);
+        // }),
         catchError(this.handleError<any>('getCityData error'))
       );
     }
     return this.http.get<any>(`https://geocoding-api.open-meteo.com/v1/search?name=${formatedTerm}&count=12&language=en&format=json`).pipe(
-        tap(response => {
-          console.log(response.results);
-          console.log(typeof(response));
-        }),
+        // tap(response => {
+        //   console.log(response.results);
+        //   console.log(typeof(response));
+        // }),
         map(response => response.results),
-        tap(response => {
-          console.log("===ICI===");
-          console.log(response);
-        }),
+        // tap(response => {
+        //   console.log("===ICI===");
+        //   console.log(response);
+        // }),
         catchError(this.handleError<any>('getCity error'))
       );
   }
