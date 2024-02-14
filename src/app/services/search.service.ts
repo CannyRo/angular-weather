@@ -13,41 +13,45 @@ export class SearchService {
 
   getCity(term: string): Observable<City[]>{
     console.log("getCity() from SearchService");
+    // console.log("term read by SearchService", term);
     if(!term.trim()){
       console.log("No term to search");
       return of([]);
     }
-    let termToArray : string[] = term.split(" ");
+    let termToArray : string[] = term.split(",");
+    // console.log("termToArray : ",termToArray);
+    let termToArrayFromSpace : string[] = term.split(" ");
+    // console.log("termToArrayFromSpace : ",termToArrayFromSpace);
     let formatedTerm : string | undefined = termToArray.at(0);
-    console.log(termToArray);
-    if(termToArray.length > 5 && termToArray[termToArray.length-4] == "id"){
+    // console.log("formatedTerm : ",formatedTerm);
+    if(termToArray.length >= 3 && termToArrayFromSpace[termToArrayFromSpace.length-4] == "id"){
       console.log("CHECK is OK")
-      console.log(termToArray[termToArray.length-2]);
-      console.log(Number(termToArray[termToArray.length-2]));
+      // console.log(termToArrayFromSpace[termToArrayFromSpace.length-2]);
+      // console.log(Number(termToArrayFromSpace[termToArrayFromSpace.length-2]));
       return this.http.get<any>(`https://geocoding-api.open-meteo.com/v1/search?name=${formatedTerm}&count=12&language=en&format=json`).pipe(
-        tap(response => {
-          console.log(response.results);
-          console.log(typeof(response));
-        }),
+        // tap(response => {
+        //   console.log(response.results);
+        //   console.log(typeof(response));
+        // }),
         map(response => response.results),
-        map(response => response.filter((res: City) => res.id == Number(termToArray[termToArray.length-2]))),
-        tap(response => {
-          console.log("===ICI===");
-          console.log(response);
-        }),
+        map(response => response.filter((res: City) => res.id == Number(termToArrayFromSpace[termToArrayFromSpace.length-2]))),
+        // tap(response => {
+        //   console.log("===ICI===");
+        //   console.log(response);
+        // }),
         catchError(this.handleError<any>('getCityData error'))
       );
     }
     return this.http.get<any>(`https://geocoding-api.open-meteo.com/v1/search?name=${formatedTerm}&count=12&language=en&format=json`).pipe(
-        tap(response => {
-          console.log(response.results);
-          console.log(typeof(response));
-        }),
+        // tap(response => {
+        //   console.log(response.results);
+        //   console.log(typeof(response));
+        // }),
         map(response => response.results),
-        tap(response => {
-          console.log("===ICI===");
-          console.log(response);
-        }),
+        // tap(response => {
+        //   console.log("===ICI===");
+        //   console.log(response);
+        // }),
         catchError(this.handleError<any>('getCity error'))
       );
   }

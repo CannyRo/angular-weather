@@ -1,1 +1,16 @@
-<p>overview works!</p>
+@if (localCity && localWeather) {
+    <section class="card_container {{backgroundColor}} {{textColor}}">
+        <div class="card_content">
+            <div>
+                <h2 class="card_title">{{localCity.name}}</h2>
+                <h3 class="card_subtitle">{{localCity.admin2}}</h3>
+                <h4 class="card_subtitle">{{localCity.country}}</h4>
+            </div>
+            <div class="temperature">{{localWeather.current.temperature_2m}} {{localWeather.current_units.temperature_2m}}</div>
+        </div>
+        <div class="card_img">
+            <img [src]="localWeather | weatherToImage" alt="" srcset="">
+        </div>
+    </section>
+}
+

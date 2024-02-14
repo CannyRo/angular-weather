@@ -16,12 +16,12 @@ export class CityObjectToStringPipe implements PipeTransform {
     // }
     // return `${city.name} ${city.country} latitude ${city.latitude} longitude ${city.longitude}`;
     if(city.name && city.postcodes && city.admin2 && city.country && city.id){
-      return `${city.name} ${city.postcodes[0]} ${city.admin2} ${city.country} [ id : ${city.id} ]`;
+      return `${city.name}, ${city.postcodes[0]}, ${city.admin2}, ${city.country}, [ id : ${city.id} ]`;
     }
     if(city.name && !city.postcodes && city.admin2 && city.country && city.id){
-      return `${city.name} ${city.admin2} ${city.country} [ id : ${city.id} ]`;
+      return `${city.name}, ${city.admin2}, ${city.country}, [ id : ${city.id} ]`;
     }
-    return `${city.name} ${city.country} [ id : ${city.id} ]`;
+    return `${city.name}, ${city.country}, [ id : ${city.id} ]`;
   }
 
 }

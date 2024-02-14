@@ -61,7 +61,7 @@ export class FacadeService {
   }
 
   getWeather(location: Coordinates){
-    console.log("getWeather() from FacadeService");
+    // console.log("getWeather() from FacadeService");
     // let localWeather : Observable<Weather> = this.searchService.getWeather(location)
     this.searchService.getWeather(location).subscribe((weather: Weather) => {
       this.weather.next(weather);
