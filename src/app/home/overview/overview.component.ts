@@ -26,19 +26,6 @@ export class OverviewComponent implements OnChanges{
 
   ngOnChanges(): void {
 
-    // if(this.weather && this.city){
-    //   // console.log('Check if City Coordinates and Weather Coordinates match => ');
-    //   this.backgroundColor = this.weather.current.is_day == 0 ? 'bg_night' : 'bg_day';
-    //   this.textColor = this.weather.current.is_day == 0 ? 'color_night' : 'color_day';
-
-    //   console.log(this.city.latitude);
-    //   console.log(this.weather.latitude);
-    //   console.log(this.city.longitude);
-    //   console.log(this.weather.longitude);
-    //   console.log("= REFRESH = : ",this.showResult);
-      
-      
-    // }
     if(this.showResult){
       this.localCity = this.city;
       this.localWeather = this.weather;
@@ -48,11 +35,11 @@ export class OverviewComponent implements OnChanges{
       this.backgroundColor = this.weather.current.is_day == 0 ? 'bg_night' : 'bg_day';
       this.textColor = this.weather.current.is_day == 0 ? 'color_night' : 'color_day';
 
-      console.log(this.city.latitude);
-      console.log(this.weather.latitude);
-      console.log(this.city.longitude);
-      console.log(this.weather.longitude);
-      console.log("= REFRESH = : ",this.showResult);
+      // console.log(this.city.latitude);
+      // console.log(this.weather.latitude);
+      // console.log(this.city.longitude);
+      // console.log(this.weather.longitude);
+      // console.log("= REFRESH = : ",this.showResult);
       
       
     }

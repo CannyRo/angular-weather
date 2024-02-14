@@ -1,7 +1,4 @@
 @if (localCity && localWeather) {
-    <!--
-    <section class="card_container" isDayOrNight [weather]="weather">-->
-        <!-- -->
     <section class="card_container {{backgroundColor}} {{textColor}}">
         <div class="card_content">
             <div>
@@ -9,18 +6,11 @@
                 <h3 class="card_subtitle">{{localCity.admin2}}</h3>
                 <h4 class="card_subtitle">{{localCity.country}}</h4>
             </div>
-            
             <div class="temperature">{{localWeather.current.temperature_2m}} {{localWeather.current_units.temperature_2m}}</div>
         </div>
-        @if(weather){
-            <div class="card_img">
+        <div class="card_img">
             <img [src]="localWeather | weatherToImage" alt="" srcset="">
-            <!--
-            <div class="card_temperature">{{localWeather.current.temperature_2m}} {{localWeather.current_units.temperature_2m}}</div>
-            -->
         </div>
-        }
-        
     </section>
 }
 
