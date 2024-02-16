@@ -1,8 +1,10 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 import { City, Coordinates } from '../../city';
 import { Weather } from '../../weather';
 import { WeatherToImagePipe } from '../../services/weather-to-image.pipe';
 import { BackgroundIsDayOrNightDirective } from '../../services/background-is-day-or-night.directive';
+import { coupleDataCityWeather } from '../../duo';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-overview',
@@ -15,8 +17,9 @@ export class OverviewComponent implements OnChanges{
 
   @Input() city!: City | null;
   @Input() weather!: Weather | null;
-
   @Input() showResult!: boolean;
+  @Output() handleLastValues = new EventEmitter<coupleDataCityWeather>();
+  @Output() setDetailCity = new EventEmitter<City>();
 
   backgroundColor: string | undefined;
   textColor: string | undefined;
@@ -24,25 +27,32 @@ export class OverviewComponent implements OnChanges{
   localCity!: City | null;
   localWeather!: Weather | null;
 
+  constructor(private router: Router){}
+
   ngOnChanges(): void {
 
     if(this.showResult){
       this.localCity = this.city;
       this.localWeather = this.weather;
+      let lastValues: coupleDataCityWeather = {
+        city : this.localCity,
+        weather : this.localWeather
+      };
+      this.handleLastValues.emit(lastValues);
     }
     if(this.weather && this.city){
-      // console.log('Check if City Coordinates and Weather Coordinates match => ');
       this.backgroundColor = this.weather.current.is_day == 0 ? 'bg_night' : 'bg_day';
       this.textColor = this.weather.current.is_day == 0 ? 'color_night' : 'color_day';
-
-      // console.log(this.city.latitude);
-      // console.log(this.weather.latitude);
-      // console.log(this.city.longitude);
-      // console.log(this.weather.longitude);
-      // console.log("= REFRESH = : ",this.showResult);
-      
-      
     }
+
+  }
+
+  seeDetail(): void {
+    console.log("See details");
+    if(this.localCity){
+      this.setDetailCity.emit(this.localCity);
+    }
+    this.router.navigate(['/detail']);
   }
 
 }

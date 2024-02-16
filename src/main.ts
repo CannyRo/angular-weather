@@ -11,7 +11,7 @@ const routes: Routes = [
     loadComponent: ()=> import("./app/home/home/home.component").then(module => module.HomeComponent)
   },
   {
-    path: ':city',
+    path: 'detail',
     loadComponent: ()=> import("./app/detail/detail.component").then(module => module.DetailComponent)
   },
   {

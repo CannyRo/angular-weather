@@ -11,6 +11,7 @@
         <div class="card_img">
             <img [src]="localWeather | weatherToImage" alt="" srcset="">
         </div>
+        <input type="button" value="See details" class="cta_detail" (click)="seeDetail()">
     </section>
 }
 
