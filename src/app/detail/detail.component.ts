@@ -7,11 +7,13 @@ import { Router } from '@angular/router';
 import { BackgroundIsDayOrNightDirective } from '../services/background-is-day-or-night.directive';
 import { WeatherToImagePipe } from '../services/weather-to-image.pipe';
 import { WeatherToTextPipe } from '../services/weather-to-text.pipe';
+import { CompassPipe } from '../services/compass.pipe';
+import { CompassToDirectionPipe } from '../services/compass-to-direction.pipe';
 
 @Component({
   selector: 'app-detail',
   standalone: true,
-  imports: [CommonModule, BackgroundIsDayOrNightDirective, WeatherToImagePipe, WeatherToTextPipe],
+  imports: [CommonModule, BackgroundIsDayOrNightDirective, WeatherToImagePipe, WeatherToTextPipe, CompassPipe, CompassToDirectionPipe],
   templateUrl: './detail.component.html',
   styleUrl: './detail.component.css'
 })
@@ -52,10 +54,9 @@ export class DetailComponent implements OnInit, OnDestroy{
       this.hrColor = weather.current.is_day == 0 ? 'hr_night' : 'hr_day';
     });
     console.log(this.weather);
-    if(this.weather && this.city){
-      
-    }
   }
+
+  
 
   ngOnDestroy(): void {
     console.log("Destroy");

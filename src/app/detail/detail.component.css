@@ -64,7 +64,7 @@ img{
 }
 
 .col{
-    width: 100%
+    width: 50%
 }
 
 .detail_title{
@@ -78,13 +78,11 @@ img{
 }
 
 .temperature{
-    padding-left: 3rem;
     font-size: 5rem;
     line-height: 6rem;
 }
 
 .sub_temperature{
-    padding-left: 3rem;
     font-size: 1.5rem;
     line-height: 2.25rem;
 }
@@ -96,7 +94,15 @@ img{
     border-radius: 1rem;
 }
 
+.wind_direction{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
 .arrow_container{
+    margin-right: 3rem;
+    margin-bottom: 1rem;
     width: 5rem;
     height: 5rem;
     display: flex;
