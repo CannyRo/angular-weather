@@ -75,5 +75,15 @@ body{
 app-root{
     display: flex;
     flex-direction: column;
-    padding: 2rem;
+	align-items: center;
+    padding: 2rem 2rem 0 2rem;
+	min-height: 100vh;
+}
+
+app-home{
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	width: 100%;
+	max-width: 44rem;
 }

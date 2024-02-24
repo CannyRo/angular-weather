@@ -1,3 +1,7 @@
+img{
+    width: 100%;
+    height: auto;
+}
 .bg_day{
     background-color: #8AC6FF;
 }
@@ -10,14 +14,13 @@
 .color_night{
     color: #fff;
 }
-
 .card_container{
     position: relative;
-    margin-top: 2rem;
-    padding: 2rem;
-    border-radius: 1rem;
+    margin-bottom: 1rem;
+    padding: 2rem 2rem 1rem 2rem;
     border: none;
     outline: none;
+    border-radius: 1rem;
     box-shadow: 
         0.25rem 0.25rem 0.375rem rgba(0, 0, 0, 0.25),
         inset 0.0625rem 0.0625rem 0.25rem rgba(255, 255, 255, 0.25),
@@ -26,7 +29,6 @@
 .card_content{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
 }
 .card_title{
     font-weight: bold;
@@ -37,57 +39,33 @@
     font-size: 1.5rem;
     line-height: 2.25rem;
 }
-
-.temperature{
-    /* flex-grow: 1; */
-    /* background-color: blueviolet;  */
-    text-align: center;
+.card_temperature{
     font-size: 5rem;
     line-height: 6rem;
 }
-
-.card_img{
-    position: relative;
-    /* background-color: aqua; */
+.card_footer{
+    text-align: end;
 }
-
-.card_temperature{
-    position: absolute;
-    top: 0;
-    right: 0;
-    font-size: 1.5rem;
-    line-height: 2.25rem;
-}
-
-img{
-    width: 100%;
-    height: auto;
-}
-
 .cta_detail{
-    cursor: pointer;
-    position: absolute;
-    bottom: 1rem;
-    right: 1rem;
     padding: 1rem;
     border-radius: 1rem;
+    font-weight: bold;
+    cursor: pointer;
     border: none;
     outline: none;
     box-shadow: 
         0.25rem 0.25rem 0.375rem rgba(0, 0, 0, 0.25),
         inset 0.0625rem 0.0625rem 0.25rem rgba(255, 255, 255, 0.25),
         inset -0.1875rem -0.1875rem 0.25rem rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(1rem);
-    font-weight: bold;
 }
 
+/*Small devices (landscape phones, 576px and up)*/
 @media (min-width: 36rem) { 
-    section{
-        display: flex;
-    }
-    .card_content, .card_img{
+    .card_img{
         width: 50%;
-        height: auto;
     }
-
+    .card_content{
+        flex-direction: row;
+        justify-content: space-between;
+    }
 }

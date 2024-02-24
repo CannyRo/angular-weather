@@ -1,5 +1,15 @@
-button{
+p{
     margin-bottom: 1rem;
+    line-height: 1.5rem;
+}
+
+img{
+    width: 100%;
+    height: auto;
+}
+
+.back{
+    margin-top: 1rem;
     height: 3rem;
     padding: 0 1rem;
     color: #fff;
@@ -15,16 +25,6 @@ button{
         0.25rem 0.25rem 0.375rem rgba(0, 0, 0, 0.25),
         inset 0.0625rem 0.0625rem 0.25rem rgba(255, 255, 255, 0.25),
         inset -0.1875rem -0.1875rem 0.25rem rgba(0, 0, 0, 0.5);
-}
-
-p{
-    margin-bottom: 1rem;
-    line-height: 1.5rem;
-}
-
-img{
-    width: 100%;
-    height: auto;
 }
 
 .bg_day{
@@ -58,14 +58,10 @@ img{
         inset 0.0625rem 0.0625rem 0.25rem rgba(255, 255, 255, 0.25),
         inset -0.1875rem -0.1875rem 0.25rem rgba(0, 0, 0, 0.5);
 }
-
-.flex{
+/* .reverse{
     display: flex;
-}
-
-.col{
-    width: 50%
-}
+    flex-direction: column-reverse;
+} */
 
 .detail_title{
     font-weight: bold;
@@ -76,30 +72,27 @@ img{
     font-size: 1.5rem;
     line-height: 2.25rem;
 }
-
-.temperature{
-    font-size: 5rem;
-    line-height: 6rem;
-}
-
-.sub_temperature{
-    font-size: 1.5rem;
-    line-height: 2.25rem;
-}
-
 .line{
     width: 100%;
     height: 0.1875rem;
     border: none;
     border-radius: 1rem;
 }
+.card_temperature{
+    font-size: 5rem;
+    line-height: 6rem;
+}
+.sub_temperature{
+    font-size: 1.5rem;
+    line-height: 2.25rem;
+}
 
 .wind_direction{
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    margin-right: 1rem;
 }
-
 .arrow_container{
     margin-right: 3rem;
     margin-bottom: 1rem;
@@ -108,4 +101,28 @@ img{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+@media (min-width: 36rem) {
+    .smallWithTwoCol{
+        display: flex;
+        justify-content: space-between;
+    }
+    .card_img{
+        width: 50%;
+        max-width: 27rem;
+    }
+    .card_content{
+        width: 50%;
+    }
+    .card_temperature{
+        font-size: 3rem;
+        line-height: 4.5rem;
+    }
+    
+}
+@media (min-width: 48rem) {
+    .mediumWithTwoCol{
+        display: flex;
+        flex-wrap: wrap;
+    }
 }
