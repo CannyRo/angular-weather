@@ -1,15 +1,10 @@
 <section>
-        <input type="text" id="search" name="search" autocomplete="off" placeholder="New York, London, Paris, etc."
+        <input type="text" id="search" name="search" autocomplete="off" placeholder="London, Paris, etc."
         #searchBox (input)="handleChange(searchBox.value)" list="datalist"/>
         <input type="button" value="Search a city" (click)="getWeather()"/>
         <datalist id="datalist" role="listbox" #datalist >
             @for (city of cities; track city.id) {
                 <option [value]="city | cityObjectToString"></option>
             }
-            
         </datalist>
-    <!-- <h3>Valeur de l'input : </h3>
-    <h3>{{searchTerm}}</h3>
-    -->
-    
 </section>

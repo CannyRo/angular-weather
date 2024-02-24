@@ -5,6 +5,8 @@ import { FavoriteComponent } from "../favorite/favorite.component";
 import { FacadeService } from '../../services/facade.service';
 import { CommonModule } from '@angular/common';
 import { City, Coordinates } from '../../city';
+import { Weather } from '../../weather';
+import { coupleDataCityWeather } from '../../duo';
 
 
 @Component({
@@ -19,7 +21,6 @@ export class HomeComponent {
     searchTerm$ = this.facade.searchTerm$;
     cities$ = this.facade.cities$;
     city$ = this.facade.city$;
-    location$ = this.facade.location$;
     weather$ = this.facade.weather$;
 
     refresh : boolean = false;
@@ -42,5 +43,19 @@ export class HomeComponent {
         // console.log("getWeather() from Home");
         this.facade.getWeather(location);
         this.refresh = true;
+    }
+
+    handleLastValues(duo:coupleDataCityWeather){
+        console.log(duo.city);
+        console.log(duo.weather);
+        this.facade.handleLastValues(duo);
+    }
+
+    setDetailCity(city:City){
+        this.facade.setDetailCity(city);
+    }
+
+    removeDetailCity(){
+        this.facade.removeDetailCity();
     }
 }

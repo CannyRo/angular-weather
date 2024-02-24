@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, catchError, map, of, tap } from 'rxjs';
+import { Observable, catchError, map, of, shareReplay, tap } from 'rxjs';
 import { City, Coordinates } from '../city';
 import { Weather } from '../weather';
 
@@ -35,6 +35,7 @@ export class SearchService {
         // }),
         map(response => response.results),
         map(response => response.filter((res: City) => res.id == Number(termToArrayFromSpace[termToArrayFromSpace.length-2]))),
+        shareReplay(),
         // tap(response => {
         //   console.log("===ICI===");
         //   console.log(response);
@@ -60,6 +61,7 @@ export class SearchService {
     console.log("getWeather() from SearchService");
     return this.http.get<any>(`https://api.open-meteo.com/v1/forecast?latitude=${location.latitude}&longitude=${location.longitude}&current=apparent_temperature,temperature_2m,relativehumidity_2m,is_day,precipitation,weathercode,windspeed_10m,winddirection_10m,windgusts_10m&hourly=apparent_temperature,temperature_2m,relativehumidity_2m,precipitation_probability,weathercode,windspeed_10m,winddirection_10m,windgusts_10m&daily=weathercode,sunrise,sunset,uv_index_max&timezone=auto`).pipe(
       tap(response => console.log(response)),
+      shareReplay(),
       catchError(this.handleError<any>('getWeather error'))
     );
   }

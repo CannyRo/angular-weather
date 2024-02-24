@@ -4,10 +4,13 @@
 [cities]="(cities$ | async)"
 (handleCity)="handleCity([$event])"
 (handleWeather)="getWeather($event)"
+(removeDetailCity)="removeDetailCity()"
 ></app-search-bar>
 <app-overview
 [city]="(city$ | async)"
 [weather]="(weather$ | async)"
 [showResult]="refresh"
+(handleLastValues)="handleLastValues($event)"
+(setDetailCity)="setDetailCity($event)"
 ></app-overview>
 <app-favorite></app-favorite>
