@@ -8,7 +8,7 @@ import { Weather } from '../weather';
 export class WeatherToImagePipe implements PipeTransform {
 
   transform(weather: Weather): string | undefined {
-    console.log("WeatherToImage ON");
+    // console.log("WeatherToImage ON");
     let base: string = "../../../assets/weathercode/";
     let end: string = ".png";
     let dayOrNight: string;
@@ -18,7 +18,7 @@ export class WeatherToImagePipe implements PipeTransform {
       dayOrNight = "_day";
     }
     let imgSrc: string = base+weather.current.weathercode+dayOrNight+end;
-    console.log(imgSrc);
+    // console.log(imgSrc);
     return imgSrc;
   }
 

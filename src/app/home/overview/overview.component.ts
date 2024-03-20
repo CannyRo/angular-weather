@@ -21,11 +21,13 @@ export class OverviewComponent implements OnChanges{
   @Output() handleLastValues = new EventEmitter<coupleDataCityWeather>();
   @Output() setDetailCity = new EventEmitter<City>();
 
-  backgroundColor: string | undefined;
-  textColor: string | undefined;
+  
 
   localCity!: City | null;
   localWeather!: Weather | null;
+
+  backgroundColor!: string;
+  textColor!: string;
 
   constructor(private router: Router){}
 

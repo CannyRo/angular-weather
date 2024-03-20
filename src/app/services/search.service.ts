@@ -58,7 +58,33 @@ export class SearchService {
   }
 
   getWeather(location: Coordinates): Observable<Weather> {
-    console.log("getWeather() from SearchService");
+    // console.log("getWeather() from SearchService")
+    /* 
+      Current :  
+          is_day,
+          weathercode,
+          apparent_temperature,
+          temperature_2m,
+          relativehumidity_2m,
+          precipitation,
+          winddirection_10m,
+          windspeed_10m,
+          windgusts_10m
+      Daily : 
+          weathercode,
+          sunrise,
+          sunset,
+          uv_index_max
+      Hourly : 
+          apparent_temperature,
+          precipitation_probability,
+          relativehumidity_2m,
+          temperature_2m,
+          weathercode,
+          winddirection_10m,
+          windgusts_10m,
+          windspeed_10m,
+    */
     return this.http.get<any>(`https://api.open-meteo.com/v1/forecast?latitude=${location.latitude}&longitude=${location.longitude}&current=apparent_temperature,temperature_2m,relativehumidity_2m,is_day,precipitation,weathercode,windspeed_10m,winddirection_10m,windgusts_10m&hourly=apparent_temperature,temperature_2m,relativehumidity_2m,precipitation_probability,weathercode,windspeed_10m,winddirection_10m,windgusts_10m&daily=weathercode,sunrise,sunset,uv_index_max&timezone=auto`).pipe(
       tap(response => console.log(response)),
       shareReplay(),

@@ -80,7 +80,7 @@ app-root{
 	min-height: 100vh;
 }
 
-app-home{
+app-home, app-detail{
 	display: flex;
 	flex-direction: column;
 	flex-grow: 1;

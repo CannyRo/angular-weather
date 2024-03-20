@@ -81,7 +81,7 @@ export class FacadeService {
   }
 
   getDetailCity():City{
-    console.log("Get this key from localStorage =>",this.key);
+    // console.log("Get this key from localStorage =>",this.key);
     this.detailCityAsString = this.localStorage.getItem(this.key);
     if(this.detailCityAsString !== null){
       this.detailCity = JSON.parse(this.detailCityAsString);

@@ -31,6 +31,14 @@
             <p>Gust : {{weather.current.windgusts_10m}} {{weather.current_units.windgusts_10m}}</p>
         </div>
     </div>
+    <app-carousel
+    [weather]="weather"
+    [carouselType]="carouselType[1]"
+    [carouselData]="weather.hourly"
+    [carouselDataUnit]="weather.hourly_units"
+    [background]="backgroundColor"
+    [text]="textColor"
+    ></app-carousel>
     
 }
 
