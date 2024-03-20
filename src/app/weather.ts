@@ -10,7 +10,7 @@ export interface Weather {
     current: Current;
     hourly_units: HourlyUnits;
     hourly: Hourly;
-    daily_units: DaylyUnits;
+    daily_units: DailyUnits;
     daily: Daily;
 }
 
@@ -42,7 +42,7 @@ interface Current {
     windgusts_10m: number;
 }
 
-interface HourlyUnits {
+export interface HourlyUnits {
     time: string;
     temperature_2m: string;
     relativehumidity_2m: string;
@@ -53,7 +53,7 @@ interface HourlyUnits {
     windgusts_10m: string;
 }
 
-interface Hourly {
+export interface Hourly {
     time: string[];
     temperature_2m: number[];
     relativehumidity_2m: number[];
@@ -64,7 +64,7 @@ interface Hourly {
     windgusts_10m: number[];
 }
 
-interface DaylyUnits {
+export interface DailyUnits {
     time: string;
     weathercode: string;
     sunrise: string;
@@ -72,7 +72,7 @@ interface DaylyUnits {
     uv_index_max: string;
 }
 
-interface Daily {
+export interface Daily {
     time: string[];
     weathercode: number[];
     sunrise: string[];

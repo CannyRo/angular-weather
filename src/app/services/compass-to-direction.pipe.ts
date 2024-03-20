@@ -7,7 +7,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class CompassToDirectionPipe implements PipeTransform {
 
   transform(num: number): string {
-    console.log("PIPE is called to have a direction")
+    // console.log("PIPE is called to have a direction");
     let response : string = '';
     let max!: number;
     let min!: number;

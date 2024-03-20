@@ -9,11 +9,12 @@ import { WeatherToImagePipe } from '../services/weather-to-image.pipe';
 import { WeatherToTextPipe } from '../services/weather-to-text.pipe';
 import { CompassPipe } from '../services/compass.pipe';
 import { CompassToDirectionPipe } from '../services/compass-to-direction.pipe';
+import { CarouselComponent } from './carousel/carousel.component';
 
 @Component({
   selector: 'app-detail',
   standalone: true,
-  imports: [CommonModule, BackgroundIsDayOrNightDirective, WeatherToImagePipe, WeatherToTextPipe, CompassPipe, CompassToDirectionPipe],
+  imports: [CommonModule, BackgroundIsDayOrNightDirective, WeatherToImagePipe, WeatherToTextPipe, CompassPipe, CompassToDirectionPipe, CarouselComponent],
   templateUrl: './detail.component.html',
   styleUrl: './detail.component.css'
 })
@@ -28,15 +29,17 @@ export class DetailComponent implements OnInit, OnDestroy{
   textColor: string | undefined;
   hrColor: string | undefined;
 
+  carouselType: string[] = ['daily','hourly'];
+
   constructor(
     private facade: FacadeService,
     private router: Router
     ){}
 
   ngOnInit(): void {
-    console.log("Detail onInit");
+    // console.log("Detail onInit");
     this.city = this.facade.getDetailCity();
-    console.log(this.city);
+    // console.log(this.city);
     if(this.city == undefined || this.city == null){
       this.router.navigate(['/home']);
     }
@@ -46,20 +49,20 @@ export class DetailComponent implements OnInit, OnDestroy{
     }
     this.facade.getWeather(location);
     this.facade.weather$.subscribe(weather => {
-      console.log("IN Detail after Subscribe => ");
-      console.log(weather);
+      // console.log("IN Detail after Subscribe => ");
+      // console.log(weather);
       this.weather = weather;
       this.backgroundColor = weather.current.is_day == 0 ? 'bg_night' : 'bg_day';
       this.textColor = weather.current.is_day == 0 ? 'color_night' : 'color_day';
       this.hrColor = weather.current.is_day == 0 ? 'hr_night' : 'hr_day';
     });
-    console.log(this.weather);
+    // console.log(this.weather);
   }
 
   
 
   ngOnDestroy(): void {
-    console.log("Destroy");
+    // console.log("Destroy");
     this.facade.removeDetailCity();
   }
 

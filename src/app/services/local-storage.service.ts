@@ -16,7 +16,7 @@ export class LocalStorageService {
 
   // Get a value from local storage
   getItem(key: string): string | null {
-    console.log("Get data from Local Storage");
+    // console.log("Get data from Local Storage");
     return localStorage.getItem(key);
   }
 
