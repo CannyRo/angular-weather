@@ -1,3 +1,8 @@
+img{
+    width: 100%;
+    height: auto;
+}
+
 .carousel_container{
     position: relative;
     /* overflow-x: auto; */
@@ -31,7 +36,6 @@
 .color_night{
     color: #fff;
 }
-
 .chevron_container{
     height: 100%;
     position: absolute;
@@ -67,17 +71,36 @@
     display: flex;
     align-items: center;
 }
-
 .slider{
     display: flex;
     flex-direction: column;
-    flex: 1 0 6rem;
+    flex: 1 0 7rem;
     align-items: center;
     justify-content: center;
-    background-color: rgb(204, 160, 245);
+    /* background-color: rgb(204, 160, 245); */
     margin-right: 0.5rem;
-    border: 1px solid black;
 }
-
-
+.img_mini{
+    width: 100%;
+}
+.width_arrow{
+    width: 2rem;
+}
+.flex_center{
+    display: flex;
+    /* width: 100%; */
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+.sub_temperature{
+    /* width: 100%; */
+    font-size: 1.5rem;
+    line-height: 2.25rem;
+    margin-bottom: 1rem;
+}
+.icon{
+    width: 1rem;
+    margin-right: 0.5rem;
+}
 

@@ -43,6 +43,8 @@ interface Current {
 }
 
 export interface HourlyUnits {
+    apparent_temperature: string;
+    is_day: string;
     time: string;
     temperature_2m: string;
     relativehumidity_2m: string;
@@ -54,6 +56,8 @@ export interface HourlyUnits {
 }
 
 export interface Hourly {
+    apparent_temperature: number[];
+    is_day: number[];
     time: string[];
     temperature_2m: number[];
     relativehumidity_2m: number[];
@@ -65,17 +69,53 @@ export interface Hourly {
 }
 
 export interface DailyUnits {
+    apparent_temperature_max: string;
+    apparent_temperature_min: string;
+    precipitation_probability_max: string;
+    temperature_2m_max: string;
+    temperature_2m_min: string;
     time: string;
-    weathercode: string;
-    sunrise: string;
-    sunset: string;
-    uv_index_max: string;
+    weather_code: string;
+    wind_direction_10m_dominant: string;
+    wind_gusts_10m_max: string;
+    wind_speed_10m_max: string;
 }
 
 export interface Daily {
+    apparent_temperature_max: number[];
+    apparent_temperature_min: number[];
+    precipitation_probability_max: number[];
+    temperature_2m_max: number[];
+    temperature_2m_min: number[];
     time: string[];
-    weathercode: number[];
-    sunrise: string[];
-    sunset: string[];
-    uv_index_max: number[];
+    weather_code: number[];
+    wind_direction_10m_dominant: number[];
+    wind_gusts_10m_max: number[];
+    wind_speed_10m_max: number[];
+}
+
+export interface HourlyFormated {
+    apparent_temperature: number;
+    is_day: number;
+    precipitation_probability: number;
+    relativehumidity_2m: number;
+    temperature_2m: number;
+    time: string;
+    weathercode: number;
+    winddirection_10m: number;
+    windgusts_10m: number;
+    windspeed_10m: number;
+}
+
+export interface DailyFormated {
+    apparent_temperature_max: number;
+    apparent_temperature_min: number;
+    precipitation_probability_max: number;
+    temperature_2m_max: number;
+    temperature_2m_min: number;
+    time: string;
+    weather_code: number;
+    wind_direction_10m_dominant: number;
+    wind_gusts_10m_max: number;
+    wind_speed_10m_max: number;
 }

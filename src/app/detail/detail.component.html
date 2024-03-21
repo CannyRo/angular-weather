@@ -39,6 +39,14 @@
     [background]="backgroundColor"
     [text]="textColor"
     ></app-carousel>
+    <app-carousel
+    [weather]="weather"
+    [carouselType]="carouselType[0]"
+    [carouselData]="weather.daily"
+    [carouselDataUnit]="weather.daily_units"
+    [background]="backgroundColor"
+    [text]="textColor"
+    ></app-carousel>
     
 }
 
