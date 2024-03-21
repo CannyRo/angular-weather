@@ -21,5 +21,4 @@ export class WeatherToImagePipe implements PipeTransform {
     // console.log(imgSrc);
     return imgSrc;
   }
-
 }

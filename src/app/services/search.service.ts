@@ -85,7 +85,7 @@ export class SearchService {
           windgusts_10m,
           windspeed_10m,
     */
-    return this.http.get<any>(`https://api.open-meteo.com/v1/forecast?latitude=${location.latitude}&longitude=${location.longitude}&current=apparent_temperature,temperature_2m,relativehumidity_2m,is_day,precipitation,weathercode,windspeed_10m,winddirection_10m,windgusts_10m&hourly=apparent_temperature,temperature_2m,relativehumidity_2m,precipitation_probability,weathercode,windspeed_10m,winddirection_10m,windgusts_10m&daily=weathercode,sunrise,sunset,uv_index_max&timezone=auto`).pipe(
+    return this.http.get<any>(`https://api.open-meteo.com/v1/forecast?latitude=${location.latitude}&longitude=${location.longitude}&current=apparent_temperature,temperature_2m,relativehumidity_2m,is_day,precipitation,weathercode,windspeed_10m,winddirection_10m,windgusts_10m&hourly=apparent_temperature,temperature_2m,relativehumidity_2m,precipitation_probability,weathercode,windspeed_10m,winddirection_10m,windgusts_10m,is_day&daily=weather_code,temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,precipitation_probability_max,wind_speed_10m_max,wind_gusts_10m_max,wind_direction_10m_dominant&timezone=auto`).pipe(
       tap(response => console.log(response)),
       shareReplay(),
       catchError(this.handleError<any>('getWeather error'))
